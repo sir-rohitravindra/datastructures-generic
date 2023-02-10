@@ -3,7 +3,7 @@ package MiscJava.DataStructures.Exceptions;
 public class LinkedListException extends Exception {
 
     public LinkedListException(String exceptionString) {
-        System.err.println(exceptionString);
+        super(exceptionString);
     }
 
 }

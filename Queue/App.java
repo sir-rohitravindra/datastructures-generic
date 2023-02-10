@@ -10,7 +10,7 @@ public class App {
 
         queue.add("S1");
         try {
-            System.out.println(queue.peek());
+            System.out.println(queue.front());
         } catch (UnderflowException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -18,7 +18,7 @@ public class App {
 
         queue.add("S2");
         try {
-            System.out.println(queue.peek());
+            System.out.println(queue.front());
         } catch (UnderflowException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -32,7 +32,7 @@ public class App {
         }
 
         try {
-            System.out.println(queue.peek());
+            System.out.println(queue.front());
         } catch (UnderflowException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -46,7 +46,7 @@ public class App {
         }
 
         try {
-            System.out.println(queue.peek());
+            System.out.println(queue.front());
         } catch (UnderflowException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -61,7 +61,7 @@ public class App {
 
         queue.add("S0");
         try {
-            System.out.println(queue.peek());
+            System.out.println(queue.front());
         } catch (UnderflowException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

@@ -26,7 +26,7 @@ public class Queue<T> {
         }
     }
 
-    public T peek() throws UnderflowException {
+    public T front() throws UnderflowException {
 
         try {
             T front = queueList.get(0);
