@@ -5,6 +5,9 @@ import java.util.Objects;
 import MiscJava.DataStructures.Exceptions.DuplicateValueException;
 import MiscJava.DataStructures.TreeUtils.TreeNode;
 
+import MiscJava.DataStructures.Stack.Stack;
+import MiscJava.DataStructures.LinkedList.LinkedList;
+
 public class BinarySearchTree<T extends Comparable<T>> {
 
     private TreeNode<T> root;
@@ -45,6 +48,37 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
         }
         return root;
+    }
+
+    public LinkedList<T> inorder() {
+
+        LinkedList<T> inorderList = new LinkedList<>();
+
+        if (Objects.nonNull(root)) {
+            Stack<TreeNode<T>> stack = new Stack<>();
+
+            TreeNode<T> curTreeNode;
+            stack.push(root);
+            try {
+                while (!stack.isEmpty()) {
+                    if (Objects.isNull(stack.peek().getLeftChild())) {
+                        curTreeNode = stack.peek();
+                        inorderList.insert(curTreeNode.getValue());
+                        stack.pop();
+                        if (Objects.nonNull(curTreeNode.getRightChild())) {
+                            stack.push(curTreeNode.getRightChild());
+                        }
+                    } else {
+                        stack.push(stack.peek().getLeftChild());
+                    }
+                }
+
+            } catch (Exception e) {
+
+            }
+
+        }
+        return inorderList;
     }
 
 }
