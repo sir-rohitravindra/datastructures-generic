@@ -3,6 +3,7 @@ package MiscJava.DataStructures.BinarySearchTree;
 import java.util.Objects;
 
 import MiscJava.DataStructures.Exceptions.DuplicateValueException;
+import MiscJava.DataStructures.TreeUtils.Traversals;
 import MiscJava.DataStructures.TreeUtils.TreeNode;
 
 import MiscJava.DataStructures.Stack.Stack;
@@ -24,11 +25,11 @@ public class BinarySearchTree<T extends Comparable<T>> {
             TreeNode<T> curTreeNode = root;
             TreeNode<T> prevTreeNode = null;
             while (Objects.nonNull(curTreeNode)) {
-                if (value.compareTo(curTreeNode.getValue()) > 0) {
+                if (value.compareTo(curTreeNode.getValue()) < 0) {
                     prevTreeNode = curTreeNode;
                     curTreeNode = curTreeNode.getLeftChild();
 
-                } else if (value.compareTo(curTreeNode.getValue()) < 0) {
+                } else if (value.compareTo(curTreeNode.getValue()) > 0) {
                     prevTreeNode = curTreeNode;
                     curTreeNode = curTreeNode.getRightChild();
                 } else {
@@ -50,7 +51,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
         return root;
     }
 
-    public LinkedList<T> inorder() {
+    public LinkedList<T> inorderV1() {
 
         LinkedList<T> inorderList = new LinkedList<>();
 
@@ -61,6 +62,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
             stack.push(root);
             try {
                 while (!stack.isEmpty()) {
+
                     if (Objects.isNull(stack.peek().getLeftChild())) {
                         curTreeNode = stack.peek();
                         inorderList.insert(curTreeNode.getValue());
@@ -71,6 +73,8 @@ public class BinarySearchTree<T extends Comparable<T>> {
                     } else {
                         stack.push(stack.peek().getLeftChild());
                     }
+                    // System.out.println(stack.peek().getValue());
+                    System.out.println(inorderList);
                 }
 
             } catch (Exception e) {
@@ -79,6 +83,14 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
         }
         return inorderList;
+    }
+
+    public LinkedList<T> inorderV2() {
+
+        Traversals<T> traversals = new Traversals<>();
+        LinkedList<T> inorderList = traversals.inorder(root);
+        return inorderList;
+
     }
 
 }
